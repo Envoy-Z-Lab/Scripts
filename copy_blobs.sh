@@ -1,70 +1,13 @@
-#!/bin/bash
+{
+  echo "=== TARGET_BOARD_PLATFORM ==="
+  grep -rn "TARGET_BOARD_PLATFORM" .
 
-SRC="vendor_xiaomi_lavender-1"
-DST="vendor_xiaomi_lavender"
+  echo "=== ifneq ==="
+  grep -rn "ifneq" .
 
-FILES=(
-"vendor/lib/egl/eglSubDriverAndroid.so"
-"vendor/lib/egl/libEGL_adreno.so"
-"vendor/lib/egl/libGLESv1_CM_adreno.so"
-"vendor/lib/egl/libGLESv2_adreno.so"
-"vendor/lib/egl/libq3dtools_adreno.so"
-"vendor/lib/egl/libq3dtools_esx.so"
-"vendor/lib/hw/vulkan.adreno.so"
-"vendor/lib/libC2D2.so"
-"vendor/lib/libCB.so"
-"vendor/lib/libOpenCL.so"
-"vendor/lib/libVkLayer_q3dtools.so"
-"vendor/lib/libadreno_utils.so"
-"vendor/lib/libc2d30_bltlib.so"
-"vendor/lib/libgpudataproducer.so"
-"vendor/lib/libgsl.so"
-"vendor/lib/libhdr_tm.so"
-"vendor/lib/libllvm-glnext.so"
-"vendor/lib/libllvm-qcom.so"
-"vendor/lib/libqseed3.so"
-"vendor/lib/librs_adreno.so"
-"vendor/lib/libsdm-color.so"
-"vendor/lib/libsdm-diag.so"
-"vendor/lib/libsdm-disp-vndapis.so"
-"vendor/lib/libsdmextension.so"
-"vendor/lib/libtinyxml2_1.so"
-"vendor/lib64/egl/eglSubDriverAndroid.so"
-"vendor/lib64/egl/libEGL_adreno.so"
-"vendor/lib64/egl/libGLESv1_CM_adreno.so"
-"vendor/lib64/egl/libGLESv2_adreno.so"
-"vendor/lib64/egl/libq3dtools_adreno.so"
-"vendor/lib64/egl/libq3dtools_esx.so"
-"vendor/lib64/hw/vulkan.adreno.so"
-"vendor/lib64/libC2D2.so"
-"vendor/lib64/libCB.so"
-"vendor/lib64/libOpenCL.so"
-"vendor/lib64/libVkLayer_q3dtools.so"
-"vendor/lib64/libadreno_utils.so"
-"vendor/lib64/libc2d30_bltlib.so"
-"vendor/lib64/libgpudataproducer.so"
-"vendor/lib64/libgsl.so"
-"vendor/lib64/libhdr_tm.so"
-"vendor/lib64/libllvm-glnext.so"
-"vendor/lib64/libllvm-qcom.so"
-"vendor/lib64/libqseed3.so"
-"vendor/lib64/librs_adreno.so"
-"vendor/lib64/libsdm-color.so"
-"vendor/lib64/libsdm-diag.so"
-"vendor/lib64/libsdm-disp-vndapis.so"
-"vendor/lib64/libsdmextension.so"
-"vendor/lib64/libtinyxml2_1.so"
-)
+  echo "=== filter ==="
+  grep -rn "filter" .
 
-for FILE in "${FILES[@]}"; do
-    SRC_FILE="$SRC/proprietary/$FILE"
-    DST_FILE="$DST/proprietary/$FILE"
-    DST_DIR=$(dirname "$DST_FILE")
-
-    if [ -f "$SRC_FILE" ]; then
-        mkdir -p "$DST_DIR"
-        cp -fv "$SRC_FILE" "$DST_FILE"
-    else
-        echo "WARNING: $SRC_FILE not found!"
-    fi
-done
+  echo "=== sdm660 ==="
+  grep -rn "sdm660" .
+} > filters.txt
